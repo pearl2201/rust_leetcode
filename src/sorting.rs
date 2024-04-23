@@ -1,7 +1,5 @@
-pub fn bubble_sort(n: usize, mut arr: Vec<i32>) {
+pub fn bubble_sort(n: usize, mut arr: Vec<i32>) -> Vec<i32> {
     let mut temp: i32;
-    // let content = format!("{}",arr.iter().map(|x| x.to_string()).collect::<Vec<_>>().join(","));
-    // println! ("{}",content);
     for i in 0..(n) {
         for j in ((i + 1)..(n)).rev() {
             if arr[j] < arr[j - 1] {
@@ -11,8 +9,7 @@ pub fn bubble_sort(n: usize, mut arr: Vec<i32>) {
             }
         }
     }
-    // let content = format!("{}",arr.iter().map(|x| x.to_string()).collect::<Vec<_>>().join(","));
-    // println! ("{}",content);
+    return arr;
 }
 
 pub fn linear_sort(n: usize, mut arr: Vec<i32>) -> Vec<i32> {
@@ -45,3 +42,16 @@ fn test_linear_sort() {
     assert_eq!(n0, 1);
     assert_eq!(sorted_arr[4], 5);
 }
+
+#[test]
+fn test_bubble_sort() {
+    let n: usize = 5;
+    let arr: Vec<i32> = vec![2, 4, 5, 1, 3];
+    let sorted_arr = bubble_sort(n, arr);
+    let n2 = sorted_arr[2];
+    let n0 = sorted_arr[0];
+    assert_eq!(n2, 3);
+    assert_eq!(n0, 1);
+    assert_eq!(sorted_arr[4], 5);
+}
+
