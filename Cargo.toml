@@ -6,8 +6,10 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+rand = "0.8.5"
+[dev-dependencies]
+criterion = { version = "0.5.1", features = ["html_reports"] }
 
-
-[[example]]
-name = "bubble_sort"
-path = "examples/bubble_sort.rs"
+[[bench]]
+name = "sort_benchmark"
+harness = false
