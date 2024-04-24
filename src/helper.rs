@@ -1,4 +1,4 @@
-pub fn printArr(arr: Vec<u32>) {
+pub fn print_arr(arr: Vec<i32>) {
     println!(
         "{}",
         arr.into_iter()
