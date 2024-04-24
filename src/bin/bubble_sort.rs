@@ -21,6 +21,9 @@ fn main() {
     }
     println!(
         "{}",
-        arr.into_iter().map(|x| x.to_string()).collect::<Vec<_>>().join(",")
+        arr.into_iter()
+            .map(|x| x.to_string())
+            .collect::<Vec<_>>()
+            .join(",")
     );
 }

@@ -22,18 +22,32 @@ fn criterion_benchmark(c: &mut Criterion) {
     let test_sizes: Vec<usize> = vec![10000];
 
     for test_size in test_sizes {
-        let arr = generate_array_with_length(test_size);
-        let n = arr.len();
-        c.bench_function(format!("bubble_sort_size_{}", test_size).as_str(), |b| {
-            b.iter(|| sorting::bubble_sort(black_box(n), black_box(arr.clone())))
+        c.bench_function(format!("merge_sort_size_{}", test_size).as_str(), |b| {
+            b.iter(|| {
+                let mut arr = generate_array_with_length(test_size);
+                let n = arr.len();
+                sorting::merger_sort(black_box(n), black_box(&mut arr));
+            })
         });
 
-        c.bench_function(format!("selection_sort_size_{}", test_size).as_str(), |b| {
-            b.iter(|| sorting::linear_sort(black_box(n), black_box(arr.clone())))
-        });
+        // c.bench_function(format!("bubble_sort_size_{}", test_size).as_str(), |b| {
+        //     b.iter(|| sorting::bubble_sort(black_box(n), black_box(&mut arr)))
+        // });
 
-        c.bench_function(format!("insertion_sort_size_{}", test_size).as_str(), |b| {
-            b.iter(|| sorting::insertion_sort(black_box(n), black_box(arr.clone())))
+        // c.bench_function(format!("selection_sort_size_{}", test_size).as_str(), |b| {
+        //     b.iter(|| sorting::linear_sort(black_box(n), black_box(arr.clone())))
+        // });
+
+        // c.bench_function(format!("insertion_sort_size_{}", test_size).as_str(), |b| {
+        //     b.iter(|| sorting::insertion_sort(black_box(n), black_box(arr.clone())))
+        // });
+
+        c.bench_function(format!("quick_sort_size_{}", test_size).as_str(), |b| {
+            b.iter(|| {
+                let mut arr = generate_array_with_length(test_size);
+                let n = arr.len();
+                sorting::quick_sort_entry(black_box(n), black_box(&mut arr));
+            })
         });
     }
 }
